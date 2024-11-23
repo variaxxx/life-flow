@@ -1,2 +1,0 @@
-# life-flow
-Daily planner
