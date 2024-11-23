@@ -1,0 +1,25 @@
+app-footer {
+  .logo {
+    &-text {
+      font-family: "Century Gothic", sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    &-icon {
+      ui-icon {
+        --icon-size: 24px;
+      }
+    }
+  }
+
+  ui-socials-icon {
+    ui-icon {
+      --icon-size: 30px;
+    }
+  }
+}

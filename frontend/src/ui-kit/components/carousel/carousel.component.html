@@ -1,0 +1,31 @@
+<div
+  class="slider-container"
+  [style.height]="height"
+>
+  @for (slide of slides; let i = $index; track i) {
+    <div
+      class="slider-item"
+      [ngClass]="{
+        'selected': i === currentSlide,
+        'next': i === (currentSlide + 1) % slides.length,
+        'prev': i === (slides.length + currentSlide - 1) % slides.length,
+        'hideLeft': i === (slides.length + currentSlide - 2) % slides.length,
+        'hideRight': i === (currentSlide + 2) % slides.length
+      }"
+    >
+      <img [src]="slide.imgSrc" [alt]="slide.imgAlt" class="slider-item-img">
+    </div>
+  }
+
+  <ul
+    class="flex justify-content-center slider-navigation"
+    [style.margin-top]="height"
+  >
+    @for (slide of slides; let i = $index; track i) {
+      <li
+        (click)="changeSlide(i)"
+        [class.active]="i === currentSlide"
+      ></li>
+    }
+  </ul>
+</div>

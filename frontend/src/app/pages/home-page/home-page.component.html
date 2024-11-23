@@ -1,0 +1,50 @@
+<div class="w-100" style="top: var(--desktop-header-height); position: absolute; z-index: -1;">
+  <div class="bg-black-150 w-100" style="height: 480px; object-fit: cover"></div>
+</div>
+
+<div class="container" style="height: 480px; margin-top: var(--desktop-header-height)">
+  <div class="row h-100">
+    <div class="col-xl-4 col-lg-4 col-md-3 col-sm-2 flex flex-column justify-content-center">
+      <h3>LifeFlow — планируйте, фиксируйте, достигайте!</h3>
+      <span class="st-s span-big text-black-700">Простой и эффективный инструмент для тех, кто стремится к балансу и хочет улучшить свою продуктивность.</span>
+      @if (isLogged()) {
+        <ui-button class="st-s" size="lg" type="primary" routerLink="/plan/">Продолжить использование</ui-button>
+      } @else {
+        <ui-button class="st-s" size="lg" type="primary" routerLink="/account/register">Начать пользоваться</ui-button>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="st-m row">
+    <div class="col-sm-2 col-md-4 col-lg-8 col-xl-8 sb-s">
+      <h1>Основные возможности</h1>
+    </div>
+
+    @for (opty of opportunities; track opty.title) {
+      <div class="col-sm-2 col-md-3 col-lg-4 col-xl-2 lg:mt-16">
+        <div class="flex flex-column rounded-12 bg-white-1000 px-24 h-100">
+          <h4 class="st-s">{{opty.title}}</h4>
+
+          <span class="span-normal text-black-700 st-xs sb-s">{{opty.description}}</span>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="st-m row sb-m">
+    <div class="col-sm-2 col-md-4 col-lg-8 col-xl-8 flex justify-content-between align-items-center w-100">
+      <h1>Test test</h1>
+
+      <div class="flex gap-8">
+        <ui-button (click)="sliderPrev()">Previous</ui-button>
+        <ui-button (click)="sliderNext()">Next</ui-button>
+      </div>
+    </div>
+
+    <div class="col-sm-2 col-md-4 col-lg-8 col-xl-8 st-s w-100">
+      <ui-carousel [slides]="sliderItems" height="360px"></ui-carousel>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<footer class="flex justify-content-center bg-white-1000">
+  <div class="h-100 flex flex-column align-items-center justify-content-evenly">
+    <ul class="flex justify-content-between gap-12 st-m text-black-700">
+      @for (btn of navigationRoutes; track btn.url) {
+        <li class="cursor-pointer" [routerLink]="btn.url">
+        <span class="span-big">
+          {{btn.text}}
+        </span>
+        </li>
+      }
+    </ul>
+
+    <div class="flex justify-content-center align-items-center gap-8 st-s">
+      <ui-icon icon="logo" class="logo-icon" filled></ui-icon>
+      <p class="logo-text">lifeflow.</p>
+    </div>
+
+    <div class="flex align-items-center justify-content-center gap-8 st-2xs socials">
+      <ui-socials-icon social="tg"></ui-socials-icon>
+      <ui-socials-icon social="vk"></ui-socials-icon>
+    </div>
+
+    <span class="span-small medium st-xs sb-m text-black-700">© 2024 LifeFlow</span>
+  </div>
+</footer>

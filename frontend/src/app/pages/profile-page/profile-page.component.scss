@@ -1,0 +1,13 @@
+@use "../../../ui-kit/styles/utility/sizes/sizes" as *;
+
+app-profile-page {
+  .user-avatar {
+    @include fixed-size(144px);
+  }
+
+  ui-button {
+    button {
+      width: 100%;
+    }
+  }
+}

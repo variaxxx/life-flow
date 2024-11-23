@@ -1,0 +1,89 @@
+<header class="flex px-48 md:px-24 justify-content-between align-items-center" [class.sticky-header]="stickyHeader">
+  <div class="flex justify-content-center cursor-pointer align-items-center gap-8" routerLink="/">
+    <ui-icon icon="logo" class="logo-icon" filled></ui-icon>
+    <p class="logo-text md:none">lifeflow.</p>
+  </div>
+
+  <nav class="md:none">
+    <ul class="flex justify-content-between gap-12">
+      @for (btn of navigationRoutes; track btn.url) {
+        <li class="cursor-pointer" [routerLink]="btn.url">
+        <span class="span-big">
+          {{btn.text}}
+        </span>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  @if (isLogged()) {
+    <div
+      class="flex align-items-center gap-8 cursor-pointer md:none"
+      routerLink="/account"
+    >
+      <span class="span-big">User</span>
+
+      <img
+        src="assets/images/blank_user.jpg"
+        alt="Avatar"
+        class="user-avatar"
+      >
+    </div>
+  } @else {
+    <div class="flex gap-8 sm:none">
+      <ui-button routerLink="/account/register">Регистрация</ui-button>
+      <ui-button type="primary" routerLink="/account/login">Войти</ui-button>
+    </div>
+  }
+
+  <ui-icon
+    [icon]="menuOpened ? 'menu-opened' : 'menu-closed'"
+    class="menu-button cursor-pointer"
+    (click)="toggleMenu()"
+  ></ui-icon>
+</header>
+
+@if (menuOpened) {
+  <div class="menu none md:flex flex-column align-items-center bg-white-1000 p-24 gap-24">
+    <ul class="flex flex-column justify-content-between rounded-8 bg-black-50 w-100">
+      @for (btn of navigationRoutes; track btn.url) {
+        <li
+          class="cursor-pointer px-24 py-12"
+          [routerLink]="btn.url"
+          (click)="toggleMenu()"
+        >
+          <span class="span-big medium">
+            {{btn.text}}
+          </span>
+        </li>
+      }
+    </ul>
+
+    @if (isLogged()) {
+      <div
+        class="flex align-items-center gap-8 cursor-pointer justify-content-end w-100"
+        routerLink="/account"
+      >
+        <span class="span-big">User</span>
+
+        <img
+          src="assets/images/blank_user.jpg"
+          alt="Avatar"
+          class="user-avatar"
+        >
+      </div>
+    } @else {
+      <div class="none sm:flex gap-8">
+        <ui-button
+          routerLink="/account/register"
+          (click)="toggleMenu()"
+        >Регистрация</ui-button>
+        <ui-button
+          type="primary"
+          routerLink="/account/login"
+          (click)="toggleMenu()"
+        >Войти</ui-button>
+      </div>
+    }
+  </div>
+}

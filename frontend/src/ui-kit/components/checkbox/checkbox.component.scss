@@ -1,0 +1,8 @@
+@use '../../../ui-kit/styles/utility/typography/typography' as *;
+
+ui-checkbox {
+  label {
+    @include span-styles;
+    @include span-normal;
+  }
+}

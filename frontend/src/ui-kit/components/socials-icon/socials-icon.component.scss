@@ -1,0 +1,15 @@
+@layer utility {
+  :host {
+    display: inline-block;
+    --socials-icon-default-color: none;
+    --socials-icon-hover-color: none;
+
+    ui-icon {
+      --icon-color: var(--socials-icon-default-color);
+
+      &:hover {
+        --icon-color: var(--socials-icon-hover-color);
+      }
+    }
+  }
+}

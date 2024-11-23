@@ -1,0 +1,65 @@
+<div class="flex flex-column justify-content-center align-items-center h-100 w-100" style="padding-top: var(--desktop-header-height);">
+  <h2>Регистрация</h2>
+
+  <form class="flex flex-column align-items-center p-24 rounded-12 bg-white-1000 st-xs" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <ui-input
+      type="text"
+      name="email"
+      inputId="registerEmail"
+      placeholder="Введите почту"
+      autocomplete="email"
+      size="lg"
+      formControlName="email"
+      label="Почта"
+    ></ui-input>
+    <ui-input
+      type="text"
+      name="name"
+      inputId="registerName"
+      placeholder="Введите имя"
+      autocomplete="name"
+      size="lg"
+      formControlName="username"
+      label="Имя"
+      class="st-xs"
+    ></ui-input>
+    <ui-input
+      type="password"
+      name="new-password"
+      inputId="registerPassword"
+      placeholder="Введите пароль"
+      autocomplete="new-password"
+      size="lg"
+      formControlName="password"
+      label="Пароль"
+      class="st-xs"
+    ></ui-input>
+    <ui-input
+      type="password"
+      name="new-password"
+      inputId="registerRepeatPassword"
+      placeholder="Повторите пароль"
+      autocomplete="new-password"
+      size="lg"
+      formControlName="repeatPassword"
+      label="Подтверждение пароля"
+      class="st-xs"
+    ></ui-input>
+
+    <ui-checkbox
+      formControlName="acceptTerms"
+      label="Соглашаюсь с условиями пользования"
+      class="st-xs"
+    ></ui-checkbox>
+
+    <ui-button
+      type="primary"
+      size="lg"
+      class="st-m w-100"
+      [disabled]="registerForm.invalid"
+    >Продолжить</ui-button>
+    <span class="span-normal flex align-items-center gap-8 st-2xs">
+      Уже зарегистрированы?<ui-link href="/account/login">Вход</ui-link>
+    </span>
+  </form>
+</div>

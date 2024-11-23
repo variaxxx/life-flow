@@ -1,0 +1,33 @@
+<div class="flex flex-column justify-content-center align-items-center h-100 w-100" style="padding-top: var(--desktop-header-height);">
+  <h2>Авторизация</h2>
+
+  <form class="flex flex-column align-items-center p-24 rounded-12 st-xs bg-white-1000" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <ui-input
+      type="text"
+      name="email"
+      inputId="loginEmail"
+      autocomplete="email"
+      size="lg"
+      label="Почта"
+      placeholder="Введите почту"
+      formControlName="email"
+    ></ui-input>
+    <ui-input
+      type="password"
+      name="password"
+      inputId="loginPassword"
+      autocomplete="password"
+      size="lg"
+      label="Пароль"
+      placeholder="Введите пароль"
+      formControlName="password"
+      class="st-xs"
+    ></ui-input>
+    <ui-link href="/account/recovery" class="st-2xs align-self-end">Восстановление пароля</ui-link>
+
+    <ui-button type="primary" size="lg" class="st-m w-100" [disabled]="loginForm.invalid">Продолжить</ui-button>
+    <span class="span-normal flex align-items-center gap-8 st-2xs">
+      Еще нет аккаунта?<ui-link href="/account/register">Регистрация</ui-link>
+    </span>
+  </form>
+</div>

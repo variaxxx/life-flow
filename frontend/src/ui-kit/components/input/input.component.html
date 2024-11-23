@@ -1,0 +1,19 @@
+<div
+  class="flex flex-column align-items-start gap-8"
+>
+  <label
+    *ngIf="label"
+    [for]="id"
+  >{{label}}</label>
+
+  <input
+    [id]="id"
+    [type]="type"
+    [name]="name"
+    [autocomplete]="autocomplete"
+    [placeholder]="placeholder"
+    [attr.data-size]="size"
+    [formControl]="formControl"
+    [required]="formControl.invalid && !formControl.untouched"
+  >
+</div>

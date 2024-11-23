@@ -1,0 +1,41 @@
+@use "../../../ui-kit/styles/utility/typography/typography" as *;
+
+ui-input {
+  label {
+    @include span-styles;
+    @include span-normal;
+  }
+
+  input {
+    @include span-styles;
+
+    border-radius: 6px;
+    border: .1em solid var(--black-100);
+
+    &[data-size="sm"] {
+      @include span-small;
+
+      padding: 8px 12px 8px 12px;
+    }
+
+    &[data-size="md"] {
+      @include span-normal;
+
+      padding: 12px 16px 12px 16px;
+    }
+
+    &[data-size="lg"] {
+      @include span-big;
+
+      padding: 15px 20px 15px 20px;
+    }
+
+    &:focus {
+      border-color: var(--blue-550);
+    }
+
+    &:invalid {
+      border-color: var(--red-400);
+    }
+  }
+}

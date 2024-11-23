@@ -1,0 +1,13 @@
+@use '../../../ui-kit/styles/utility/sizes/sizes' as *;
+
+app-register-page {
+  ui-button {
+    button {
+      width: 100%;
+    }
+  }
+
+  form {
+    @include fixed-width(300px);
+  }
+}
