@@ -11,16 +11,15 @@ export interface Opportunity {
 }
 
 @Component({
-  selector: 'app-home-page',
-  standalone: true,
-	imports: [
-		ButtonComponent,
-		RouterLink,
-		CarouselComponent
-	],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-home-page',
+    imports: [
+        ButtonComponent,
+        RouterLink,
+        CarouselComponent
+    ],
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePageComponent {
 	@ViewChild(CarouselComponent) carouselComponent!: CarouselComponent;

@@ -11,16 +11,15 @@ import {UserService} from "../../../services/user.service";
 import {NavigationRoute, NavigationService} from "../../../services/navigation.service";
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [
-    RouterLink,
-    IconComponent,
-    ButtonComponent
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-header',
+    imports: [
+        RouterLink,
+        IconComponent,
+        ButtonComponent
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
   public stickyHeader: boolean = false;

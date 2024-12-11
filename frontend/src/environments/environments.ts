@@ -1,3 +1,3 @@
 export const environments = {
-	apiBaseUrl: 'http://localhost:8080',
+	apiBaseUrl: 'https://icherniakov.ru/yt-course',
 }

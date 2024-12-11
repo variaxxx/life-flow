@@ -1,12 +1,13 @@
 import {inject, Injectable} from '@angular/core';
-import {BehaviorSubject, catchError} from "rxjs";
+import {BehaviorSubject, catchError, tap, throwError} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environments} from "../../environments/environments";
 import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
 
-export interface LoginResponse {
-  token: string;
-
+export interface TokenResponse {
+  access_token: string;
+  refresh_token: string;
 }
 
 export interface UserModel {
@@ -17,14 +18,21 @@ export interface UserModel {
   avatarUrl: string | null;
 }
 
+export interface LoginForm {
+  username?: string | null;
+  password?: string | null;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private _isUserLoggedIn = new BehaviorSubject<boolean>(false);
+  public token: string | null = null;
+  public refreshToken: string | null = null;
 
   private httpClient = inject(HttpClient);
+  private cookieService = inject(CookieService);
   private router = inject(Router);
 
   public registration(info: UserModel) {
@@ -35,27 +43,63 @@ export class UserService {
         })
       )
       .subscribe(value => {
-        this._isUserLoggedIn.next(true);
-        this.router.navigateByUrl('');
         console.log(value);
       })
+
+    // TODO: refactor registration
   }
 
-  public login(info: {username: string, password: string}): void {
-    this.httpClient.post<LoginResponse>(`${environments.apiBaseUrl}/user/login`, info, {responseType: 'json'})
+  public login(payload: LoginForm) {
+    const fd = new FormData();
+    fd.append("username", payload.username!);
+    fd.append("password", payload.password!);
+
+    return this.httpClient.post<TokenResponse>(`${environments.apiBaseUrl}/auth/token`, fd)
       .pipe(
+        tap(value => this.saveTokens(value)),
         catchError(err => {
           throw new Error('Error while trying to log in')
         })
       )
-      .subscribe(value => {
-        this._isUserLoggedIn.next(true);
-        this.router.navigateByUrl('');
-        console.log('Successfully logged in');
-      })
+  }
+
+  public refreshAuthToken() {
+    return this.httpClient.post<TokenResponse>(
+      `${environments.apiBaseUrl}/auth/refresh`,
+      {
+        refresh_token: this.refreshToken
+      }
+      )
+      .pipe(
+        tap(value => this.saveTokens(value)),
+        catchError(err => {
+          this.logout();
+          return throwError(err);
+        })
+      )
+  }
+
+  public logout() {
+    this.cookieService.deleteAll();
+    this.token = null;
+    this.refreshToken = null;
+    this.router.navigateByUrl('/account/login')
+  }
+
+  private saveTokens(value: TokenResponse) {
+    this.token = value.access_token;
+    this.refreshToken = value.refresh_token;
+
+    this.cookieService.set('token', this.token);
+    this.cookieService.set('refreshToken', this.refreshToken);
   }
 
   get isUserLoggedIn() {
-    return this._isUserLoggedIn.value;
+    if (!this.token) {
+      this.token = this.cookieService.get('token');
+      this.refreshToken = this.cookieService.get('refreshToken')
+    }
+
+    return !!this.token;
   }
 }

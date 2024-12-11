@@ -2,11 +2,12 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import {provideHttpClient} from "@angular/common/http";
+import {provideHttpClient, withInterceptors} from "@angular/common/http";
 import {IconsConfig, provideIcons} from "../ui-kit/components/icon/services/icon.service";
 import {icons} from "./app.icons";
 import {provideSocials, SocialsConfig} from "../ui-kit/components/socials-icon/socials-icon.component";
 import {NavigationConfig, provideNavigationRoutes} from "./services/navigation.service";
+import {authTokenInterceptor} from "./interceptors/auth.interceptor";
 
 export const headerConfig: NavigationConfig = {
   auth: [
@@ -62,7 +63,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authTokenInterceptor])),
     provideIcons(iconsConfig),
     provideSocials(socialsProps),
     provideNavigationRoutes(headerConfig)

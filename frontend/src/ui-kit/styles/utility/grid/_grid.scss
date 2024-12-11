@@ -122,16 +122,6 @@ $grid-settings: (
       margin-right: calc(-1 * map-get(map-get($grid-settings, $breakpoint), gutter) / 2);
     }
   }
-
-  //> [class*="col"] {
-  //  &:first-child {
-  //    padding-left: 0;
-  //  }
-  //
-  //  &:last-child {
-  //    padding-right: 0;
-  //  }
-  //}
 }
 
 @mixin generate-columns($breakpoint) {

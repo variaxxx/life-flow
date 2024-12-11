@@ -3,13 +3,12 @@ import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@ang
 export type LinkSize = 'sm' | 'md' | 'lg';
 
 @Component({
-  selector: 'ui-link',
-  standalone: true,
-  imports: [],
-  templateUrl: './link.component.html',
-  styleUrl: './link.component.scss',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ui-link',
+    imports: [],
+    templateUrl: './link.component.html',
+    styleUrl: './link.component.scss',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LinkComponent {
   @Input({required: true}) href!: string;

@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, inject, Injectable, makeEnvironmentProviders} from '@angular/core';
+import { inject, Injectable, makeEnvironmentProviders, provideAppInitializer } from '@angular/core';
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {catchError, of, tap, zip} from "rxjs";
 import {HttpClient} from "@angular/common/http";
@@ -10,18 +10,9 @@ export interface IconsConfig<T = readonly string[]> {
 
 export const provideIcons = (config: IconsConfig) => {
   return makeEnvironmentProviders([
-    {
-      provide: APP_INITIALIZER,
-      multi: true,
-      deps: [IconService],
-      useFactory: (iconsService: IconService) => {
-        return () => {
-          return iconsService.initIcons(config);
-        }
-      }
-    }
+    provideAppInitializer(() => inject(IconService).initIcons(config))
   ])
-}
+};
 
 @Injectable({
   providedIn: 'root'

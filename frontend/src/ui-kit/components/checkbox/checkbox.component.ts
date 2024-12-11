@@ -7,28 +7,27 @@ import {
 } from "@angular/forms";
 
 @Component({
-  selector: 'ui-checkbox',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule
-  ],
-  templateUrl: './checkbox.component.html',
-  styleUrl: './checkbox.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  viewProviders: [
-    {
-      provide: ControlContainer,
-      useFactory: () => inject(ControlContainer, { skipSelf: true })
-    }
-  ],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => CheckboxComponent),
-      multi: true
-    }
-  ]
+    selector: 'ui-checkbox',
+    imports: [
+        ReactiveFormsModule
+    ],
+    templateUrl: './checkbox.component.html',
+    styleUrl: './checkbox.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    viewProviders: [
+        {
+            provide: ControlContainer,
+            useFactory: () => inject(ControlContainer, { skipSelf: true })
+        }
+    ],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => CheckboxComponent),
+            multi: true
+        }
+    ]
 })
 export class CheckboxComponent {
   @Input({required: true}) formControlName!: string;

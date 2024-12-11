@@ -5,17 +5,16 @@ import {SocialsIconComponent} from "../../../../ui-kit/components/socials-icon/s
 import {NavigationRoute, NavigationService} from "../../../services/navigation.service";
 
 @Component({
-  selector: 'app-footer',
-  standalone: true,
-	imports: [
-		IconComponent,
-		RouterLink,
-		SocialsIconComponent
-	],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	encapsulation: ViewEncapsulation.None
+    selector: 'app-footer',
+    imports: [
+        IconComponent,
+        RouterLink,
+        SocialsIconComponent
+    ],
+    templateUrl: './footer.component.html',
+    styleUrl: './footer.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None
 })
 export class FooterComponent implements OnInit {
 	private navigationService = inject(NavigationService);

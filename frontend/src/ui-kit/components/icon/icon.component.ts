@@ -4,12 +4,11 @@ import {SafeHtml} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
 
 @Component({
-  selector: 'ui-icon',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './icon.component.html',
-  styleUrl: './icon.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ui-icon',
+    imports: [CommonModule],
+    templateUrl: './icon.component.html',
+    styleUrl: './icon.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconComponent {
   @Input({required: true})

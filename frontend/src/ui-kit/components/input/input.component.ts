@@ -11,18 +11,17 @@ export type InputSize = 'sm' | 'md' | 'lg';
 export type InputType = 'text' | 'password';
 
 @Component({
-  selector: 'ui-input',
-  standalone: true,
-	imports: [
-		ReactiveFormsModule,
-		NgIf
-	],
-  templateUrl: './input.component.html',
-  styleUrl: './input.component.scss',
-  encapsulation: ViewEncapsulation.None,
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	viewProviders: [{ provide: ControlContainer, useFactory: () => inject(ControlContainer, {skipSelf: true}) }],
-	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true }]
+    selector: 'ui-input',
+    imports: [
+        ReactiveFormsModule,
+        NgIf
+    ],
+    templateUrl: './input.component.html',
+    styleUrl: './input.component.scss',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    viewProviders: [{ provide: ControlContainer, useFactory: () => inject(ControlContainer, { skipSelf: true }) }],
+    providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputComponent), multi: true }]
 })
 export class InputComponent {
   @Input({required: true}) name!: string;

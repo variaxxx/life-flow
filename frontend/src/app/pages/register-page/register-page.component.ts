@@ -7,19 +7,18 @@ import {CheckboxComponent} from "../../../ui-kit/components/checkbox/checkbox.co
 import {UserService} from "../../services/user.service";
 
 @Component({
-  selector: 'app-register-page',
-  standalone: true,
-	imports: [
-		InputComponent,
-		ButtonComponent,
-		LinkComponent,
-		ReactiveFormsModule,
-		CheckboxComponent
-	],
-  templateUrl: './register-page.component.html',
-  styleUrl: './register-page.component.scss',
-	encapsulation: ViewEncapsulation.None,
-	changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-register-page',
+    imports: [
+        InputComponent,
+        ButtonComponent,
+        LinkComponent,
+        ReactiveFormsModule,
+        CheckboxComponent
+    ],
+    templateUrl: './register-page.component.html',
+    styleUrl: './register-page.component.scss',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterPageComponent {
 	private userService = inject(UserService);

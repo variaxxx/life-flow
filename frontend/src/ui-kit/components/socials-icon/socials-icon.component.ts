@@ -25,14 +25,13 @@ export const provideSocials = (config: SocialsConfig): Provider => ({
 })
 
 @Component({
-  selector: 'ui-socials-icon',
-  standalone: true,
-  imports: [
-    IconComponent
-  ],
-  templateUrl: './socials-icon.component.html',
-  styleUrl: './socials-icon.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ui-socials-icon',
+    imports: [
+        IconComponent
+    ],
+    templateUrl: './socials-icon.component.html',
+    styleUrl: './socials-icon.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SocialsIconComponent {
   @Input({required: true}) set social(value: string) {

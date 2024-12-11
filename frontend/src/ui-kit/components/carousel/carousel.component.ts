@@ -7,13 +7,12 @@ export interface SliderItem {
 }
 
 @Component({
-  selector: 'ui-carousel',
-  standalone: true,
-  imports: [
-    NgClass
-  ],
-  templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.scss'
+    selector: 'ui-carousel',
+    imports: [
+        NgClass
+    ],
+    templateUrl: './carousel.component.html',
+    styleUrl: './carousel.component.scss'
 })
 export class CarouselComponent {
   @Input({required: true}) slides!: SliderItem[];
